@@ -117,10 +117,12 @@ public class GameManager : MonoBehaviour
         
         while (true)
         {
-            totalRecursos.Pay(storeInfo.recursoUsado, storeInfo.consumptionPerMin);
-            totalCurrency += storeInfo.cashPerMin;
+            if (totalRecursos.Pay(storeInfo.recursoUsado, storeInfo.consumptionPerMin))
+            {
+                totalCurrency += storeInfo.cashPerMin;
+                OnResourceUpdate?.Invoke(totalRecursos, totalCurrency);
+            }
             
-            OnResourceUpdate?.Invoke(totalRecursos, totalCurrency);
             yield return minute;
         }
     }
