@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -35,6 +36,8 @@ public class MenuManager : MonoBehaviour
    [BoxGroup("Lojas -- Sushi")] public GameObject blockSushi;
 
    [BoxGroup("Lojas -- Chocolate")] public GameObject chocolate;
+
+   public static readonly UnityEvent<BlockManager.Tipo> OnTryUnlock = new(), OnTryUpgrade = new();
 
     public void Start()
     {
@@ -75,18 +78,37 @@ public class MenuManager : MonoBehaviour
     #endregion
 
     #region UnlockFunctions
-    public void UnlockStore(Button unlockButton, GameObject unlockOverlay, GameObject storeOverlay)
+    public void UnlockStore(Button unlockButton, GameObject unlockOverlay, GameObject storeOverlay, BlockManager.Tipo tipo)
     {
+        OnTryUnlock?.Invoke(tipo);
+        
+        if(!ResourceManager.Instance.IsUnlocked(tipo)) return;
+        
         unlockButton.onClick.RemoveAllListeners();
         unlockButton.onClick.AddListener(() => storeOverlay.SetActive(true));
-        
         unlockOverlay.SetActive(false);
         storeOverlay.SetActive(true);   
     }
-    public void LiberaMilkshake() => UnlockStore(milkshakeButton, blockMilkshake, milkshake);
-    public void LiberaKfc()       => UnlockStore(kfcButton, blockKfc, kfc);
-    public void LiberaSushi()     => UnlockStore(sushiButton, blockSushi, sushi);
+    public void LiberaMilkshake() => UnlockStore(milkshakeButton, blockMilkshake, milkshake, BlockManager.Tipo.Vaca);
+    public void LiberaKfc()       => UnlockStore(kfcButton, blockKfc, kfc, BlockManager.Tipo.Galinha);
+    public void LiberaSushi()     => UnlockStore(sushiButton, blockSushi, sushi, BlockManager.Tipo.Peixe);
     // Desbloqueio de outras lojas
+    #endregion
+    
+    #region UpgradeFunctions
+    public void UpgradeStore(Button upgradeButton, GameObject storeOverlay, BlockManager.Tipo tipo)
+    {
+        OnTryUpgrade?.Invoke(tipo);
+        
+        if(!ResourceManager.Instance.IsUpgraded(tipo)) return;
+
+        upgradeButton.onClick.RemoveAllListeners();
+        storeOverlay.SetActive(false);   
+    }
+    public void MelhoraMilkshake() => UpgradeStore(milkshakeButton, milkshake, BlockManager.Tipo.Vaca);
+    public void MelhoraKfc()       => UpgradeStore(kfcButton, kfc, BlockManager.Tipo.Galinha);
+    public void MelhoraSushi()     => UpgradeStore(sushiButton, sushi, BlockManager.Tipo.Peixe);
+    // Melhora de outras lojas
     #endregion
     
     public void Fechar()
