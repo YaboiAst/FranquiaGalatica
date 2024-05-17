@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class BlockManager : MonoBehaviour
@@ -28,9 +29,9 @@ public class BlockManager : MonoBehaviour
     public static Transform Ground = null;
     private Stack<BlockController> _pilha;
 
-    public static UnityEvent<Transform> OnStackSet = new();
-    public static UnityEvent<BlockController> OnStackAdd = new();
-    public static UnityEvent OnUpdateCamera = new();
+    public static readonly UnityEvent<Transform> OnStackSet = new();
+    public static readonly UnityEvent<BlockController> OnStackAdd = new();
+    public static readonly UnityEvent OnUpdateCamera = new();
     
     private void Start()
     {

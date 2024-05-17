@@ -7,13 +7,13 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     [SerializeField] private Renderer sky;
-    private Material skyMaterial;
+    private Material _skyMaterial;
     [SerializeField] private float parallaxOffset;
     [SerializeField] private float parallaxDuration;
     
     private void Start()
     {
-        skyMaterial = sky.material;
+        _skyMaterial = sky.material;
         
         BlockManager.OnUpdateCamera.AddListener(UpdateCamera);
     }
@@ -30,7 +30,7 @@ public class Parallax : MonoBehaviour
         var offset = new Vector2(0f, parallaxOffset / (parallaxDuration * 50f));
         while (counter >= 0f)
         {
-            skyMaterial.mainTextureOffset -= offset * Time.deltaTime;
+            _skyMaterial.mainTextureOffset -= offset * Time.deltaTime;
             counter -= Time.deltaTime;
             yield return null;
         }

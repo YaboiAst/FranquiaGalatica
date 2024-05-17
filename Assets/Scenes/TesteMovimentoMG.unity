@@ -554,7 +554,7 @@ MonoBehaviour:
     chanceSpawn: 60
   - tipo: 1
     prefabBlock: {fileID: 3008785127547320556, guid: 1b615df3c51fae74caa4049c98bd4016, type: 3}
-    chanceSpawn: 20
+    chanceSpawn: 30
   - tipo: 2
     prefabBlock: {fileID: 5085495989313281041, guid: 6cdf8b6732b702b498f0b3a12ae47ad7, type: 3}
     chanceSpawn: 10

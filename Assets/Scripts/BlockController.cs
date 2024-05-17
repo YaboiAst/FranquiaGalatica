@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +10,7 @@ public class BlockController : MonoBehaviour
     private Collider2D _collider2D;
     private Tween _dropTween;
     
-    public static UnityEvent OnBlockDrop = new();
+    public static readonly UnityEvent OnBlockDrop = new();
 
     private void Start()
     {

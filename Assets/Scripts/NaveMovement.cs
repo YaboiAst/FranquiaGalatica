@@ -3,22 +3,6 @@ using UnityEngine;
 
 public class NaveMovement : MonoBehaviour
 {
-    /*
-     *  Mudar isso pra um level manager
-     *  Para "carregar" um bloco na fila, o sistema pega algum elemento da tabela aleatoriamente
-     */
-    // public enum Tipo {Vaca, Galinha}
-    //
-    // public class Dropavel
-    // {
-    //     public Tipo tipo;
-    //     public GameObject tipoPrefab;
-    //
-    //      public int spawnChance;
-    // }
-    //
-    // public Dropavel[] tabelaDeAnimais;
-
     [Header("Movement")]
     [SerializeField] private Transform startPoint, endPoint;
     [SerializeField] private float shipVelocity;
