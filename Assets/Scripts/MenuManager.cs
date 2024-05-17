@@ -16,13 +16,16 @@ public class MenuManager : MonoBehaviour
    public GameObject blockkfc;
    public Button kfcbutton;
    public GameObject sushi;
+   public GameObject blocksushi;
+   public Button sushib;
    public GameObject chocolate;
 
     public void Start()
     {
         milk.onClick.AddListener(Milkshake);
         kfcbutton.onClick.AddListener(Kfc);
-        botaoVaca.onClick.AddListener(ViagemVaca);   
+        botaoVaca.onClick.AddListener(ViagemVaca);
+        sushib.onClick.AddListener(Sushi);   
     }
     public void Play()
     {
@@ -32,6 +35,8 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    //CONTROLE DE VIAGEM PRA TERRA
     public void Terra()
     {
        fases.SetActive(true);
@@ -73,7 +78,14 @@ public class MenuManager : MonoBehaviour
     }
     public void Sushi()
     {
-        sushi.SetActive(true);     
+        blocksushi.SetActive(true); 
+    }
+    public void LiberaSushi()
+    {
+        sushib.onClick.RemoveListener(Sushi);
+        sushib.onClick.AddListener(()=>sushi.SetActive(true));
+        blocksushi.SetActive(false);
+        sushi.SetActive(true); 
     }
      public void Chocolate()
     {
@@ -90,6 +102,8 @@ public class MenuManager : MonoBehaviour
         blockkfc.SetActive(false);
             
         sushi.SetActive(false);
+        blocksushi.SetActive(false);
+        
         chocolate.SetActive(false);
     }
 }
