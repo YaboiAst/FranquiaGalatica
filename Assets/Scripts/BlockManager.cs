@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using UnityEditor.Compilation;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -19,11 +20,38 @@ public class BlockManager : MonoBehaviour
         [MinValue(0), MaxValue(100)] public int chanceSpawn;
     }
 
-    [SerializeField] private Dropavel[] tabelaDeDrops;
+    [System.Serializable]
+    public class TabelaValores
+    {
+        public int qtdVacas;
+        public int qtdGalinhas;
+        public int qtdCoelhos;
+        public int qtdRatos;
+        public int qtdAbelhas;
+        public int qtdPeixes;
+
+        public TabelaValores()
+        {
+            qtdVacas = 0;
+            qtdGalinhas = 0;
+            qtdCoelhos = 0;
+            qtdRatos = 0;
+            qtdAbelhas = 0;
+            qtdPeixes = 0;
+        }
+    }
+
     [SerializeField] private Transform blockPosition;
     
+    [SerializeField] private Dropavel[] tabelaDeDrops;
+    
+    [Space(20)]
+    
+    [SerializeField] private TabelaValores objetivos;
+    private TabelaValores _progressoAtual;
+    
     // Load Info
-    private GameObject _loadedBlock;
+    private BlockController _loadedBlock;
     
     // Stack Info
     public static Transform Ground = null;
@@ -31,10 +59,14 @@ public class BlockManager : MonoBehaviour
 
     public static readonly UnityEvent<Transform> OnStackSet = new();
     public static readonly UnityEvent<BlockController> OnStackAdd = new();
+    public static readonly UnityEvent<TabelaValores> OnTableUpdate = new();
+    
     public static readonly UnityEvent OnUpdateCamera = new();
     
     private void Start()
     {
+        _progressoAtual = new TabelaValores();
+        
         _loadedBlock = null;
         _pilha = new Stack<BlockController>();
         
@@ -49,8 +81,41 @@ public class BlockManager : MonoBehaviour
     {
         block.transform.SetParent(Ground);
         _pilha.Push(block);
+
+        switch (block.RetType())
+        {
+            case Tipo.Vaca:
+                _progressoAtual.qtdVacas++;
+                break;
+            case Tipo.Galinha:
+                _progressoAtual.qtdGalinhas++;
+                break;
+            case Tipo.Coelho:
+                _progressoAtual.qtdCoelhos++;
+                break;
+            case Tipo.Rato:
+                _progressoAtual.qtdRatos++;
+                break;
+            case Tipo.Abelha:
+                _progressoAtual.qtdAbelhas++;
+                break;
+            case Tipo.Peixe:
+                _progressoAtual.qtdPeixes++;
+                break;
+            default: break;
+        }
         
-        // Atualizar contadores?
+        OnTableUpdate?.Invoke(_progressoAtual);
+        
+        if(_progressoAtual.qtdVacas    < objetivos.qtdVacas   ) return;
+        if(_progressoAtual.qtdGalinhas < objetivos.qtdGalinhas) return;
+        if(_progressoAtual.qtdCoelhos  < objetivos.qtdCoelhos ) return;
+        if(_progressoAtual.qtdRatos    < objetivos.qtdRatos   ) return;
+        if(_progressoAtual.qtdAbelhas  < objetivos.qtdAbelhas ) return;
+        if(_progressoAtual.qtdPeixes   < objetivos.qtdPeixes  ) return;
+
+        Debug.Log("Alcançou a meta!");
+        // EndLevel
     }
 
     private void LoadBlock()
@@ -63,7 +128,9 @@ public class BlockManager : MonoBehaviour
         {
             if (randChance < temp + drop.chanceSpawn)
             {
-                _loadedBlock = Instantiate(drop.prefabBlock, blockPosition.position, blockPosition.rotation, this.transform);
+                var go = Instantiate(drop.prefabBlock, blockPosition.position, blockPosition.rotation, this.transform);
+                _loadedBlock = go.GetComponent<BlockController>();
+                _loadedBlock.LoadType(drop.tipo);
                 break;
             }
             else temp += drop.chanceSpawn;
@@ -75,8 +142,7 @@ public class BlockManager : MonoBehaviour
         if(_loadedBlock is null) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _loadedBlock.transform.SetParent(null);
-            _loadedBlock.GetComponent<BlockController>().Drop();
+            _loadedBlock.Drop();
             _loadedBlock = null;
         }
     }

@@ -7,11 +7,16 @@ public class BlockController : MonoBehaviour
     [SerializeField] private float dropSpeed = 10f;
     [SerializeField] private LayerMask checkLimit;
     
-    private Collider2D _collider2D;
-    private Tween _dropTween;
+    private BlockManager.Tipo _blockInfo;
+    public void LoadType(BlockManager.Tipo tipo) => _blockInfo = tipo;
+    public BlockManager.Tipo RetType() => _blockInfo;
     
-    public static readonly UnityEvent OnBlockDrop = new();
+    private Collider2D _collider2D;
 
+    private Tween _dropTween;
+
+    public static readonly UnityEvent OnBlockDrop = new();
+    
     private void Start()
     {
         _collider2D = GetComponent<Collider2D>();
@@ -21,6 +26,8 @@ public class BlockController : MonoBehaviour
     public void Drop()
     {
         _collider2D.enabled = true;
+        transform.SetParent(null);
+        
         _dropTween = transform.DOMoveY(transform.position.y - 20f, dropSpeed)
             .SetEase(Ease.Linear);
     }
@@ -37,10 +44,11 @@ public class BlockController : MonoBehaviour
             BlockManager.OnStackSet?.Invoke(other.transform);
         }
 
+        if (transform.parent != null) return;
+        
         TestLimit();
         OnBlockDrop?.Invoke();
         BlockManager.OnStackAdd?.Invoke(this);
-        this.enabled = false;
     }
 
     private void TestLimit()
