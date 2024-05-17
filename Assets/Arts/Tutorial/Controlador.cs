@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Controlador : MonoBehaviour
 {
     DialogueSystem dialogueSystem;
+    
   
     public void Awake()
     {
@@ -13,7 +16,8 @@ public class Controlador : MonoBehaviour
     }
 
     public void Start(){
-        dialogueSystem.Next();     
+                dialogueSystem.Next();
+
     }
     
     public void Update()
@@ -24,5 +28,8 @@ public class Controlador : MonoBehaviour
             StopAllCoroutines();
        }    
         
+    }
+    public void Pular(){
+        SceneManager.LoadScene("UI");
     }
 }

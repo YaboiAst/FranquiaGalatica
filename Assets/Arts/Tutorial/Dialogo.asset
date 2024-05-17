@@ -14,8 +14,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkScript:
   - name: Bilu
-    text: "Ola tudo bem? Este \xE9 nosso tutorial "
+    text: "Opa meu par\xE7a, tudo sussa? "
     sprite: {fileID: 0}
   - name: Bilu
-    text: Busque Conhecimento.
+    text: "Bem vindo ao cartel- quer dizer, bem vindo \xE0 franquia! Eu sou o Bilu,
+      o seu chefe. Vou te supervisionar por agora. "
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: "T\xE1 vendo aquele planetinha ali? O povo chama de Terra. Lugarzinho molhado.
+      Mas acontece que os trouxas de l\xE1 tem os EXATOS recursos que precisamos
+      para abastecer nossa franquia de restaurantes. "
+    sprite: {fileID: 21300000, guid: 4c6489de0c931cb4186691056535cdef, type: 3}
+  - name: Bilu
+    text: "O pessoal l\xE1 de cima falou que tamos precisando afogar a concorr\xEAncia,
+      ent\xE3o vamos ter que aumentar o n\xFAmero das nossas unidades e mant\xEA-las
+      funcionando. E \xE9 a\xED que voc\xEA entra."
+    sprite: {fileID: 21300000, guid: 4c6489de0c931cb4186691056535cdef, type: 3}
+  - name: Bilu
+    text: "Por\xE9m, por raz\xF5es legais, nosso trampo vai ter que ser no sigilo,
+      mor\xF4? Vai ser entrar, pegar e sair. Vapt vupt."
+    sprite: {fileID: 21300000, guid: 4c6489de0c931cb4186691056535cdef, type: 3}
+  - name: Bilu
+    text: "Vou te descer l\xE1 e voc\xEA empilha os recursos [APERTANDO A TECLA ESPA\xC7O]
+      pra que possamos pegar tudo com maior efici\xEAncia. Mas, cuidado!"
+    sprite: {fileID: 21300000, guid: 4c6489de0c931cb4186691056535cdef, type: 3}
+  - name: Bilu
+    text: "Se voc\xEA derrubar alguma coisa, vamos ter que sair da terra pra n\xE3o
+      chamar a aten\xE7\xE3o dos humanos. "
+    sprite: {fileID: 21300000, guid: 4c6489de0c931cb4186691056535cdef, type: 3}
+  - name: Bilu
+    text: "Depois, vamos aos neg\xF3cios. Para abrir as novas lojas, voc\xEA vai
+      precisar de OURO e RECURSOS. "
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: Cada unidade consome recursos e produz OURO! Aquela belezinha dourada.
+    sprite: {fileID: 21300000, guid: a3e30a7ca9dab3541b82c3a996d3dada, type: 3}
+  - name: Bilu
+    text: "Se a loja n\xE3o tiver recursos para se manter, ela ir\xE1 fechar."
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: "Voc\xEA pode melhorar as lojas tamb\xE9m, gastando mais RECURSOS. Lojas
+      melhores fazem mais com menos, tornando a minha vida mais f\xE1cil (e de tabela,
+      a sua tamb\xE9m). "
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: "Temos planos de expandir com 6 lojas. Assim que atingirmos nossa meta,
+      terminaremos por aqui, e eu vou deixar voc\xEA ver a sua fam\xEDlia."
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: "Mas sem press\xE3o, ok?"
+    sprite: {fileID: 0}
+  - name: Bilu
+    text: Para viajar para a terra basta clicar no planeta e selecionar a fase que
+      deseja, lembre-se que cada viagem custa uma quantidade de ouro.
     sprite: {fileID: 0}
