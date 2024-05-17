@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-   public GameObject fases; 
+   public GameObject fases;
+   public Button botaoVaca;
+   public GameObject viajar; 
    public GameObject milkshake;
    public GameObject blockmilkshake;
    public Button milk;
@@ -19,7 +21,8 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         milk.onClick.AddListener(Milkshake);
-        kfcbutton.onClick.AddListener(Kfc);   
+        kfcbutton.onClick.AddListener(Kfc);
+        botaoVaca.onClick.AddListener(ViagemVaca);   
     }
     public void Play()
     {
@@ -32,6 +35,11 @@ public class MenuManager : MonoBehaviour
     public void Terra()
     {
        fases.SetActive(true);
+       viajar.SetActive(false);
+    }
+    public void ViagemVaca()
+    {
+       viajar.SetActive(true);
     }
      public void Viajar()
     {
