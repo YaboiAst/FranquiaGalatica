@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class BlockManager : MonoBehaviour
 {
-    public enum Tipo {Vaca, Galinha, Coelho, Rato, Abelha, Peixe}
+    public enum Tipo {Vaca, Galinha, Peixe, Coelho, Abelha, Rato}
     
     [System.Serializable]
     public class Dropavel
@@ -20,35 +20,14 @@ public class BlockManager : MonoBehaviour
         [MinValue(0), MaxValue(100)] public int chanceSpawn;
     }
 
-    [System.Serializable]
-    public class TabelaValores
-    {
-        public int qtdVacas;
-        public int qtdGalinhas;
-        public int qtdCoelhos;
-        public int qtdRatos;
-        public int qtdAbelhas;
-        public int qtdPeixes;
-
-        public TabelaValores()
-        {
-            qtdVacas = 0;
-            qtdGalinhas = 0;
-            qtdCoelhos = 0;
-            qtdRatos = 0;
-            qtdAbelhas = 0;
-            qtdPeixes = 0;
-        }
-    }
-
     [SerializeField] private Transform blockPosition;
     
     [SerializeField] private Dropavel[] tabelaDeDrops;
     
     [Space(20)]
     
-    [SerializeField] private TabelaValores objetivos;
-    private TabelaValores _progressoAtual;
+    [SerializeField] private GameManager.TabelaValores objetivos;
+    private GameManager.TabelaValores _progressoAtual;
     
     // Load Info
     private BlockController _loadedBlock;
@@ -59,13 +38,29 @@ public class BlockManager : MonoBehaviour
 
     public static readonly UnityEvent<Transform> OnStackSet = new();
     public static readonly UnityEvent<BlockController> OnStackAdd = new();
-    public static readonly UnityEvent<TabelaValores> OnTableUpdate = new();
+    public static readonly UnityEvent<GameManager.TabelaValores> OnTableUpdate = new();
     
     public static readonly UnityEvent OnUpdateCamera = new();
     
     private void Start()
     {
-        _progressoAtual = new TabelaValores();
+        // Load info from Game Manager
+        var gm = GameManager.Instance;
+        var curLevel = gm.currentLevel;
+        
+        if (gm is null) return;
+
+        tabelaDeDrops = new Dropavel[curLevel.levelDrops.Length];
+        for (var i = 0; i < tabelaDeDrops.Length; i++)
+        {
+            tabelaDeDrops[i] = curLevel.levelDrops[i];
+        }
+
+        objetivos = new GameManager.TabelaValores();
+        objetivos.Copy(curLevel.objetivos);
+        
+        // Initialize 
+        _progressoAtual = new GameManager.TabelaValores();
         
         _loadedBlock = null;
         _pilha = new Stack<BlockController>();
@@ -90,17 +85,17 @@ public class BlockManager : MonoBehaviour
             case Tipo.Galinha:
                 _progressoAtual.qtdGalinhas++;
                 break;
+            case Tipo.Peixe:
+                _progressoAtual.qtdPeixes++;
+                break;
             case Tipo.Coelho:
                 _progressoAtual.qtdCoelhos++;
-                break;
-            case Tipo.Rato:
-                _progressoAtual.qtdRatos++;
                 break;
             case Tipo.Abelha:
                 _progressoAtual.qtdAbelhas++;
                 break;
-            case Tipo.Peixe:
-                _progressoAtual.qtdPeixes++;
+            case Tipo.Rato:
+                _progressoAtual.qtdRatos++;
                 break;
             default: break;
         }
@@ -109,10 +104,10 @@ public class BlockManager : MonoBehaviour
         
         if(_progressoAtual.qtdVacas    < objetivos.qtdVacas   ) return;
         if(_progressoAtual.qtdGalinhas < objetivos.qtdGalinhas) return;
-        if(_progressoAtual.qtdCoelhos  < objetivos.qtdCoelhos ) return;
-        if(_progressoAtual.qtdRatos    < objetivos.qtdRatos   ) return;
-        if(_progressoAtual.qtdAbelhas  < objetivos.qtdAbelhas ) return;
         if(_progressoAtual.qtdPeixes   < objetivos.qtdPeixes  ) return;
+        if(_progressoAtual.qtdCoelhos  < objetivos.qtdCoelhos ) return;
+        if(_progressoAtual.qtdAbelhas  < objetivos.qtdAbelhas ) return;
+        if(_progressoAtual.qtdRatos    < objetivos.qtdRatos   ) return;
 
         Debug.Log("Alcançou a meta!");
         // EndLevel

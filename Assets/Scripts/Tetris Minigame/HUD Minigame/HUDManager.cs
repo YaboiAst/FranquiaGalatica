@@ -16,10 +16,10 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         BlockManager.OnTableUpdate.AddListener(UpdateHUD);
-        UpdateHUD(new BlockManager.TabelaValores());
+        UpdateHUD(new GameManager.TabelaValores());
     }
 
-    private void UpdateHUD(BlockManager.TabelaValores valoresAtualizados)
+    private void UpdateHUD(GameManager.TabelaValores valoresAtualizados)
     {
         vacaText.text    = $"x{valoresAtualizados.qtdVacas    : 00}";
         galinhaText.text = $"x{valoresAtualizados.qtdGalinhas : 00}";

@@ -1,108 +1,106 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-   public GameObject fases;
-   public Button botaoVaca;
-   public GameObject viajar; 
-   public GameObject milkshake;
-   public GameObject blockmilkshake;
-   public Button milk;
-   public GameObject kfc;
-   public GameObject blockkfc;
-   public Button kfcbutton;
-   public GameObject sushi;
-   public GameObject blocksushi;
-   public Button sushib;
-   public GameObject chocolate;
+   [BoxGroup("Seleção de nível")] public GameObject fases;
+   [BoxGroup("Seleção de nível")] public GameObject viajar; 
+   
+   [BoxGroup("Seleção de nível")] public Button botaoVaca;
+   [BoxGroup("Seleção de nível")] public Button botaoGalinha;
+   [BoxGroup("Seleção de nível")] public Button botaoPeixe;
+   [BoxGroup("Seleção de nível")] public Button botaoCoelho;
+   [BoxGroup("Seleção de nível")] public Button botaoAbelha;
+   [BoxGroup("Seleção de nível")] public Button botaoRato;
+   
+   // ^^^ BOTOES DE SELEÇÃO DE FASE ^^^
+   [Space(15)]
+   // VVV BOTOES DE ADMNISTRAÇÃO VVV
+   
+   [BoxGroup("Lojas -- Milkshake")] public Button milkshakeButton;
+   [BoxGroup("Lojas -- Milkshake")] public GameObject milkshake;
+   [BoxGroup("Lojas -- Milkshake")] public GameObject blockMilkshake;
+
+   [BoxGroup("Lojas -- KFC")] public Button kfcButton;
+   [BoxGroup("Lojas -- KFC")] public GameObject kfc;
+   [BoxGroup("Lojas -- KFC")] public GameObject blockKfc;
+
+   [BoxGroup("Lojas -- Sushi")] public Button sushiButton;
+   [BoxGroup("Lojas -- Sushi")] public GameObject sushi;
+   [BoxGroup("Lojas -- Sushi")] public GameObject blockSushi;
+
+   [BoxGroup("Lojas -- Chocolate")] public GameObject chocolate;
 
     public void Start()
     {
-        milk.onClick.AddListener(Milkshake);
-        kfcbutton.onClick.AddListener(Kfc);
-        botaoVaca.onClick.AddListener(ViagemVaca);
-        sushib.onClick.AddListener(Sushi);   
+        // Inicializar botões da seleção de fase
+        botaoVaca.onClick.AddListener(Viagem);
+        botaoGalinha.onClick.AddListener(Viagem);
+        botaoPeixe.onClick.AddListener(Viagem);
+        botaoCoelho.onClick.AddListener(Viagem);
+        botaoAbelha.onClick.AddListener(Viagem);
+        botaoRato.onClick.AddListener(Viagem);
+        
+        // Inicializar botões de admnistração
+        milkshakeButton.onClick.AddListener(() => ActivateOverlay(blockMilkshake, true));
+        kfcButton.onClick.AddListener(() => ActivateOverlay(blockKfc, true));
+        sushiButton.onClick.AddListener(() => ActivateOverlay(blockSushi, true));
+        // Outras lojas
     }
-    public void Play()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    public void Exit()
-    {
-        Application.Quit();
-    }
+    public void Play() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    public void Exit() => Application.Quit();
+    
+    public void ActivateOverlay(GameObject go, bool state) => go.SetActive(state);
 
-    //CONTROLE DE VIAGEM PRA TERRA
+    #region SelecaoFases
     public void Terra()
     {
-       fases.SetActive(true);
-       viajar.SetActive(false);
+        fases.SetActive(true);
+        viajar.SetActive(false);
     }
-    public void ViagemVaca()
+    public void Viagem()
     {
-       viajar.SetActive(true);
+        viajar.SetActive(true);
     }
-     public void Viajar()
-    {
+    public void Viajar()
+    { 
+        if(!GameManager.Instance.PayTravel()) return;
         SceneManager.LoadScene("TesteMovimentoMG");
     }
-    
-    //CONTROLE DE BOTOES MILKSHAKE
-     public void Milkshake()
-    {
-        blockmilkshake.SetActive(true);     
-    }
-     public void LiberaMilkshake()
-    {       
-        milk.onClick.RemoveListener(Milkshake);
-        milk.onClick.AddListener(()=>milkshake.SetActive(true));
-        blockmilkshake.SetActive(false);
-        milkshake.SetActive(true);       
-    }
+    #endregion
 
-    //CONTROLE DE BOTOES KFC
-    public void Kfc()
+    #region UnlockFunctions
+    public void UnlockStore(Button unlockButton, GameObject unlockOverlay, GameObject storeOverlay)
     {
-        blockkfc.SetActive(true);     
+        unlockButton.onClick.RemoveAllListeners();
+        unlockButton.onClick.AddListener(() => storeOverlay.SetActive(true));
+        
+        unlockOverlay.SetActive(false);
+        storeOverlay.SetActive(true);   
     }
-    public void LiberaKFC()
-    {       
-        kfcbutton.onClick.RemoveListener(Kfc);
-        kfcbutton.onClick.AddListener(()=>kfc.SetActive(true));
-        blockkfc.SetActive(false);
-        kfc.SetActive(true);       
-    }
-    public void Sushi()
-    {
-        blocksushi.SetActive(true); 
-    }
-    public void LiberaSushi()
-    {
-        sushib.onClick.RemoveListener(Sushi);
-        sushib.onClick.AddListener(()=>sushi.SetActive(true));
-        blocksushi.SetActive(false);
-        sushi.SetActive(true); 
-    }
-     public void Chocolate()
-    {
-        chocolate.SetActive(true);     
-    }
+    public void LiberaMilkshake() => UnlockStore(milkshakeButton, blockMilkshake, milkshake);
+    public void LiberaKfc()       => UnlockStore(kfcButton, blockKfc, kfc);
+    public void LiberaSushi()     => UnlockStore(sushiButton, blockSushi, sushi);
+    // Desbloqueio de outras lojas
+    #endregion
+    
     public void Fechar()
     {       
         fases.SetActive(false);
 
-        blockmilkshake.SetActive(false);
+        blockMilkshake.SetActive(false);
         milkshake.SetActive(false); 
 
         kfc.SetActive(false);
-        blockkfc.SetActive(false);
+        blockKfc.SetActive(false);
             
         sushi.SetActive(false);
-        blocksushi.SetActive(false);
+        blockSushi.SetActive(false);
         
         chocolate.SetActive(false);
     }
