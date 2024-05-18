@@ -152,8 +152,5 @@ public class MenuManager : MonoBehaviour
 
         queijo.SetActive(false);
         blockQueijo.SetActive(false);
-        
-
-        
     }
 }

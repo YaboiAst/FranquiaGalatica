@@ -36,7 +36,7 @@ public class ResourceManager : MonoBehaviour
     private GameManager _gm;
     
     public static readonly UnityEvent<StoreInfo> OnStoreUpdate = new();
-    public static readonly UnityEvent OnBankrupt = new();
+    public static readonly UnityEvent OnBankrupt = new(), OnEndGame = new();
 
     private void Start()
     {
@@ -83,6 +83,16 @@ public class ResourceManager : MonoBehaviour
         storeToUnlock.isUnlocked = true;
         
         OnStoreUpdate?.Invoke(storeToUnlock);
+        CheckWin();
+    }
+
+    private void CheckWin()
+    {
+        foreach (var store in _stores)
+        {
+            if(!store.isUnlocked) return;
+            OnEndGame?.Invoke();
+        }
     }
 
     public void UpgradeStore(BlockManager.Tipo tipo)
