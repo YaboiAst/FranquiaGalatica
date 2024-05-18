@@ -35,7 +35,18 @@ public class MenuManager : MonoBehaviour
    [BoxGroup("Lojas -- Sushi")] public GameObject sushi;
    [BoxGroup("Lojas -- Sushi")] public GameObject blockSushi;
 
+   [BoxGroup("Lojas -- Chocolate")] public Button chocoButton;
    [BoxGroup("Lojas -- Chocolate")] public GameObject chocolate;
+   [BoxGroup("Lojas -- Chocolate")] public GameObject blockChocolate;
+
+   [BoxGroup("Lojas -- Mel")] public Button melButton;
+   [BoxGroup("Lojas -- Mel")] public GameObject mel;
+   [BoxGroup("Lojas -- Mel")] public GameObject blockMel;
+
+   [BoxGroup("Lojas -- Queijo")] public Button queijoButton;
+   [BoxGroup("Lojas -- Queijo")] public GameObject queijo;
+   [BoxGroup("Lojas -- Queijo")] public GameObject blockQueijo;
+
 
    public static readonly UnityEvent<BlockManager.Tipo> OnTryUnlock = new(), OnTryUpgrade = new();
 
@@ -53,6 +64,9 @@ public class MenuManager : MonoBehaviour
         milkshakeButton.onClick.AddListener(() => ActivateOverlay(blockMilkshake, true));
         kfcButton.onClick.AddListener(() => ActivateOverlay(blockKfc, true));
         sushiButton.onClick.AddListener(() => ActivateOverlay(blockSushi, true));
+        chocoButton.onClick.AddListener(() => ActivateOverlay(blockChocolate, true));
+        melButton.onClick.AddListener(() => ActivateOverlay(blockMel, true));
+        queijoButton.onClick.AddListener(() => ActivateOverlay(blockQueijo, true));
         // Outras lojas
     }
     public void Play() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -92,6 +106,9 @@ public class MenuManager : MonoBehaviour
     public void LiberaMilkshake() => UnlockStore(milkshakeButton, blockMilkshake, milkshake, BlockManager.Tipo.Vaca);
     public void LiberaKfc()       => UnlockStore(kfcButton, blockKfc, kfc, BlockManager.Tipo.Galinha);
     public void LiberaSushi()     => UnlockStore(sushiButton, blockSushi, sushi, BlockManager.Tipo.Peixe);
+    public void LiberaChocolate() => UnlockStore(chocoButton, blockChocolate, chocolate, BlockManager.Tipo.Coelho);
+    public void LiberaMel() => UnlockStore(melButton, blockMel, mel, BlockManager.Tipo.Abelha);
+    public void LiberaQueijo() => UnlockStore(queijoButton, blockQueijo, queijo, BlockManager.Tipo.Rato);
     // Desbloqueio de outras lojas
     #endregion
     
@@ -108,6 +125,9 @@ public class MenuManager : MonoBehaviour
     public void MelhoraMilkshake() => UpgradeStore(milkshakeButton, milkshake, BlockManager.Tipo.Vaca);
     public void MelhoraKfc()       => UpgradeStore(kfcButton, kfc, BlockManager.Tipo.Galinha);
     public void MelhoraSushi()     => UpgradeStore(sushiButton, sushi, BlockManager.Tipo.Peixe);
+    public void MelhoraChocolate()     => UpgradeStore(chocoButton, chocolate, BlockManager.Tipo.Coelho);
+    public void MelhoraMel()     => UpgradeStore(melButton, mel, BlockManager.Tipo.Abelha);
+    public void MelhoraQueijo()     => UpgradeStore(queijoButton, queijo, BlockManager.Tipo.Rato);
     // Melhora de outras lojas
     #endregion
     
@@ -125,5 +145,15 @@ public class MenuManager : MonoBehaviour
         blockSushi.SetActive(false);
         
         chocolate.SetActive(false);
+        blockChocolate.SetActive(false);
+
+        mel.SetActive(false);
+        blockMel.SetActive(false);
+
+        queijo.SetActive(false);
+        blockQueijo.SetActive(false);
+        
+
+        
     }
 }
