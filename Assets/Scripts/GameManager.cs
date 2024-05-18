@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RunStoreCoroutine(ResourceManager.StoreInfo storeInfo)
     {
-        var minute = new WaitForSeconds(1f);
+        var minute = new WaitForSeconds(20f);
         
         while (true)
         {
