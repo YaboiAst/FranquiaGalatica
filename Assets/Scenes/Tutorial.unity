@@ -184,7 +184,7 @@ MonoBehaviour:
   m_text: Bilu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_text: Pular Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

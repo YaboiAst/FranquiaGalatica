@@ -184,7 +184,7 @@ MonoBehaviour:
   m_text: Programador
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_text: Ana Beatriz
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_text: Ast
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_text: GameDesigner
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_text: Produtor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_text: Artista 2d
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_text: Programador
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_text: Sfx
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_text: Naga
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1762,7 +1762,7 @@ MonoBehaviour:
   m_text: Mary
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_text: Agradecimentos
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_text: GameDesigner
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_text: Sfx
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_text: Artista 2d
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3109,7 +3109,7 @@ MonoBehaviour:
   m_text: 'Lipe '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
-  m_sharedMaterial: {fileID: -8358964076022912343, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
+  m_sharedMaterial: {fileID: -583178972201445232, guid: 6061760ae70c8a58dba783c981b41deb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
