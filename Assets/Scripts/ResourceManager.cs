@@ -54,6 +54,8 @@ public class ResourceManager : MonoBehaviour
         
         if (!_gm.totalRecursos.Pay(tipo, storeToUnlock.unlockCostResource)) return;
         
+        GameManager.OnResourceUpdate?.Invoke(_gm.totalRecursos, _gm.totalCurrency);
+
         if(storeToUnlock.isUnlocked) return;
         storeToUnlock.isUnlocked = true;
         
@@ -69,6 +71,8 @@ public class ResourceManager : MonoBehaviour
 
         if (!_gm.totalRecursos.Pay(tipo, storeToUpgrade.upgradeCostResource)) return;
         
+        GameManager.OnResourceUpdate?.Invoke(_gm.totalRecursos, _gm.totalCurrency);
+
         if(storeToUpgrade.isUpgraded) return;
         storeToUpgrade.isUpgraded = true;
 
