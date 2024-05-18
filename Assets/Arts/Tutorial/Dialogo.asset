@@ -50,7 +50,8 @@ MonoBehaviour:
     text: Cada unidade consome recursos e produz OURO! Aquela belezinha dourada.
     sprite: {fileID: 21300000, guid: a3e30a7ca9dab3541b82c3a996d3dada, type: 3}
   - name: Bilu
-    text: "Se a loja n\xE3o tiver recursos para se manter, ela ir\xE1 fechar."
+    text: "Se a loja n\xE3o tiver recursos para se manter, ela ir\xE1 fechar e a
+      loja ficar\xE1 vermelha."
     sprite: {fileID: 0}
   - name: Bilu
     text: "Voc\xEA pode melhorar as lojas tamb\xE9m, gastando mais RECURSOS. Lojas
