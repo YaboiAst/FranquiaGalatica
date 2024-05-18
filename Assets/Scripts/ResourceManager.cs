@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -42,7 +43,13 @@ public class ResourceManager : MonoBehaviour
         Instance = this;
         _gm = GameManager.Instance;
 
-        if(!CheckFinances()) OnBankrupt?.Invoke();
+        if(!CheckFinances())
+        {
+            var seq = DOTween.Sequence();
+            seq.AppendInterval(0.5f);
+            seq.AppendCallback(() => OnBankrupt?.Invoke());
+            return;
+        }
         
         MenuManager.OnTryUnlock.AddListener(UnlockStore);
         MenuManager.OnTryUpgrade.AddListener(UpgradeStore);
@@ -50,13 +57,13 @@ public class ResourceManager : MonoBehaviour
 
     private bool CheckFinances()
     {
-        if (_gm.totalCurrency < 2) return false;
-        if (_gm.totalRecursos.qtdVacas    <= 0) return false;
-        if (_gm.totalRecursos.qtdGalinhas <= 0) return false;
-        if (_gm.totalRecursos.qtdPeixes   <= 0) return false;
-        if (_gm.totalRecursos.qtdCoelhos  <= 0) return false;
-        if (_gm.totalRecursos.qtdAbelhas  <= 0) return false;
-        if (_gm.totalRecursos.qtdRatos    <= 0) return false;
+        if ((_gm.totalCurrency < 2) 
+        && (_gm.totalRecursos.qtdVacas    <= 0) 
+        && (_gm.totalRecursos.qtdGalinhas <= 0) 
+        && (_gm.totalRecursos.qtdPeixes   <= 0) 
+        && (_gm.totalRecursos.qtdCoelhos  <= 0) 
+        && (_gm.totalRecursos.qtdAbelhas  <= 0) 
+        && (_gm.totalRecursos.qtdRatos    <= 0)) return false;
          
         return true;
     }

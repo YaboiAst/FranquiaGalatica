@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     public int totalCurrency;
 
     public static readonly UnityEvent<TabelaValores, int> OnResourceUpdate = new();
+    public static readonly UnityEvent<BlockManager.Tipo, bool> OnResourceAvailable = new();
     public static readonly UnityEvent OnLose = new(), OnWin = new();
     
     private void Awake()
@@ -122,9 +123,9 @@ public class GameManager : MonoBehaviour
             {
                 totalCurrency += storeInfo.cashPerMin;
                 OnResourceUpdate?.Invoke(totalRecursos, totalCurrency);
+                OnResourceAvailable?.Invoke(storeInfo.recursoUsado, true);
             }
-            
-            
+            else OnResourceAvailable?.Invoke(storeInfo.recursoUsado, false);
         }
     }
 }
