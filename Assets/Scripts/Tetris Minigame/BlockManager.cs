@@ -63,11 +63,15 @@ public class BlockManager : MonoBehaviour
         _progressoAtual = new GameManager.TabelaValores();
         
         _loadedBlock = null;
+        Ground = null;
         _pilha = new Stack<BlockController>();
         
         BlockController.OnBlockDrop.AddListener(LoadBlock);
         OnStackSet.AddListener((Transform t) => Ground = t);
         OnStackAdd.AddListener(UpdatePilha);
+        
+        GameManager.OnLose.AddListener(() => this.enabled = false);
+        GameManager.OnWin.AddListener(()  => this.enabled = false);
         
         LoadBlock();
     }
@@ -109,8 +113,16 @@ public class BlockManager : MonoBehaviour
         if(_progressoAtual.qtdAbelhas  < objetivos.qtdAbelhas ) return;
         if(_progressoAtual.qtdRatos    < objetivos.qtdRatos   ) return;
 
-        Debug.Log("Alcançou a meta!");
-        // EndLevel
+        var gm = GameManager.Instance;
+
+        gm.totalRecursos.qtdVacas    += _progressoAtual.qtdVacas;
+        gm.totalRecursos.qtdGalinhas += _progressoAtual.qtdGalinhas;
+        gm.totalRecursos.qtdPeixes   += _progressoAtual.qtdPeixes;
+        gm.totalRecursos.qtdCoelhos  += _progressoAtual.qtdCoelhos;
+        gm.totalRecursos.qtdAbelhas  += _progressoAtual.qtdAbelhas;
+        gm.totalRecursos.qtdRatos    += _progressoAtual.qtdRatos;
+        
+        GameManager.OnWin?.Invoke();
     }
 
     private void LoadBlock()

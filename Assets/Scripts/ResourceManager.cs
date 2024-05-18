@@ -35,16 +35,32 @@ public class ResourceManager : MonoBehaviour
     private GameManager _gm;
     
     public static readonly UnityEvent<StoreInfo> OnStoreUpdate = new();
+    public static readonly UnityEvent OnBankrupt = new();
 
     private void Start()
     {
         Instance = this;
-        
         _gm = GameManager.Instance;
+
+        if(!CheckFinances()) OnBankrupt?.Invoke();
+        
         MenuManager.OnTryUnlock.AddListener(UnlockStore);
         MenuManager.OnTryUpgrade.AddListener(UpgradeStore);
     }
 
+    private bool CheckFinances()
+    {
+        if (_gm.totalCurrency < 2) return false;
+        if (_gm.totalRecursos.qtdVacas    <= 0) return false;
+        if (_gm.totalRecursos.qtdGalinhas <= 0) return false;
+        if (_gm.totalRecursos.qtdPeixes   <= 0) return false;
+        if (_gm.totalRecursos.qtdCoelhos  <= 0) return false;
+        if (_gm.totalRecursos.qtdAbelhas  <= 0) return false;
+        if (_gm.totalRecursos.qtdRatos    <= 0) return false;
+         
+        return true;
+    }
+    
     public void UnlockStore(BlockManager.Tipo tipo)
     {
         var storeToUnlock = _stores.Find(loja => loja.recursoUsado == tipo);

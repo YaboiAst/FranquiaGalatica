@@ -40,7 +40,11 @@ public class BlockController : MonoBehaviour
         _dropTween.Kill();
         if (other.gameObject.CompareTag("Chao"))
         {
-            if (BlockManager.Ground is not null) return; // Fim do nivel?
+            if (BlockManager.Ground is not null)
+            {
+                GameManager.OnLose?.Invoke();
+                return;
+            }
             BlockManager.OnStackSet?.Invoke(other.transform);
         }
 
