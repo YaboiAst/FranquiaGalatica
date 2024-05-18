@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8352243283544213511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8352243283544213510}
+  - component: {fileID: 8352243283544213513}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8352243283544213510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352243283544213511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1012.9499, y: 608.3594, z: 6.7540884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8352243283544213513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352243283544213511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f482483ef06c017844eefd778e9c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stores:
+  - recursoUsado: 0
+    consumptionPerMin: 1
+    cashPerMin: 2
+    unlockCostCurrency: 0
+    unlockCostResource: 2
+    isUnlocked: 0
+    upgradeCostCurrency: 4
+    upgradeCostResource: 5
+    isUpgraded: 0
+    upgradeModifier: 2
+  - recursoUsado: 1
+    consumptionPerMin: 1
+    cashPerMin: 4
+    unlockCostCurrency: 2
+    unlockCostResource: 5
+    isUnlocked: 0
+    upgradeCostCurrency: 8
+    upgradeCostResource: 5
+    isUpgraded: 0
+    upgradeModifier: 2
+  - recursoUsado: 2
+    consumptionPerMin: 2
+    cashPerMin: 8
+    unlockCostCurrency: 4
+    unlockCostResource: 5
+    isUnlocked: 0
+    upgradeCostCurrency: 12
+    upgradeCostResource: 10
+    isUpgraded: 0
+    upgradeModifier: 3
+  - recursoUsado: 3
+    consumptionPerMin: 2
+    cashPerMin: 8
+    unlockCostCurrency: 6
+    unlockCostResource: 8
+    isUnlocked: 0
+    upgradeCostCurrency: 16
+    upgradeCostResource: 12
+    isUpgraded: 0
+    upgradeModifier: 4
+  - recursoUsado: 4
+    consumptionPerMin: 5
+    cashPerMin: 40
+    unlockCostCurrency: 10
+    unlockCostResource: 12
+    isUnlocked: 0
+    upgradeCostCurrency: 40
+    upgradeCostResource: 20
+    isUpgraded: 0
+    upgradeModifier: 4
+  - recursoUsado: 5
+    consumptionPerMin: 10
+    cashPerMin: 40
+    unlockCostCurrency: 20
+    unlockCostResource: 24
+    isUnlocked: 0
+    upgradeCostCurrency: 100
+    upgradeCostResource: 40
+    isUpgraded: 0
+    upgradeModifier: 5

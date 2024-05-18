@@ -8,14 +8,15 @@ public class MenuMenu : MonoBehaviour
     // Start is called before the first frame update
     public void Play()
     {
+        Destroy(GameManager.Instance.gameObject, .1f);
+        GameManager.Instance = null;
+        
+        Destroy(ResourceManager.Instance.gameObject, .1f);
+        ResourceManager.Instance = null;
+
         SceneManager.LoadScene("Tutorial");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
      public void Back()
     {
         SceneManager.LoadScene("Menu");

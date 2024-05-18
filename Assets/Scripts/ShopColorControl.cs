@@ -20,10 +20,13 @@ public class ShopColorControl : MonoBehaviour
         
         GameManager.OnResourceAvailable.AddListener(UpdateColor);
         ResourceManager.OnStoreUpdate.AddListener(UpdateColor);
+        // ResourceManager.OnStoreUpdate?.Invoke();
     }
 
     private void UpdateColor(ResourceManager.StoreInfo info)
     {
+        if(tipo != info.recursoUsado) return;
+        
         if (info.isUnlocked)
         {
             shopSprite.color = availableColor;

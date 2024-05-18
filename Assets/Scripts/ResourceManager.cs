@@ -32,6 +32,19 @@ public class ResourceManager : MonoBehaviour
         public void Upgrade() => cashPerMin = (int) (cashPerMin * upgradeModifier);
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     [SerializeField] private List<StoreInfo> _stores;
     private GameManager _gm;
     
@@ -91,8 +104,9 @@ public class ResourceManager : MonoBehaviour
         foreach (var store in _stores)
         {
             if(!store.isUnlocked) return;
-            OnEndGame?.Invoke();
         }
+        
+        OnEndGame?.Invoke();
     }
 
     public void UpgradeStore(BlockManager.Tipo tipo)
